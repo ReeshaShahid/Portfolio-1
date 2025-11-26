@@ -58,24 +58,11 @@
             color: var(--bg-color);
             box-shadow: 0 0 15px var(--primary-color);
         }
-        /* Content Section Styling */
+        
         .content-section {
             width: 100%; 
             min-height: calc(100vh - var(--header-height)); 
             padding: 40px 5%; 
-        }
-        .home-content {
-            display: flex; 
-            flex-direction: column; 
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: calc(100vh - var(--header-height) - 80px);
-        }
-        .home-content img {
-            width: 250px; height: 250px; border-radius: 50%; object-fit: cover; 
-            box-shadow: 0 0 30px var(--primary-color); margin-bottom: 30px;
-            border: 5px solid var(--primary-color);
         }
         h2 {
             font-size: 40px; margin-bottom: 25px;
@@ -87,30 +74,99 @@
             background: var(--card-bg); padding: 30px; border-radius: 15px;
             margin: 20px 0; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(0, 255, 204, 0.2); backdrop-filter: blur(8px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 255, 204, 0.15);
         }
-        .skill-info { color: var(--primary-color); }
-        .progress { background: #1a1a1a; border-radius: 10px;}
-        .progress div { height: 10px; border-radius: 10px; background: var(--primary-color); box-shadow: 0 0 8px var(--primary-color);}
         .projects-grid {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;
         }
-        .projects-grid .card { text-align: center; }
-        .projects-grid img { width: 100px; height: 100px; margin-bottom: 15px; object-fit: contain;}
+        .projects-grid .card { 
+            text-align: left; 
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Thumbnail Styling */
+        .project-thumbnail {
+            width: 100%;
+            height: 220px; 
+            object-fit: cover; 
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            cursor: pointer; 
+            transition: 0.3s ease;
+        }
+        
+        .project-thumbnail:hover {
+            border-color: var(--primary-color);
+            opacity: 0.8;
+        }
 
-        /* Media Queries */
+        .projects-grid h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* --- CSS FOR LIGHTBOX (POPUP) --- */
+        .lightbox {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            padding-top: 50px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 20px var(--primary-color);
+            border-radius: 10px;
+            animation-name: zoom;
+            animation-duration: 0.4s;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
         @media (max-width: 768px) {
-            #main-header { flex-direction: column; align-items: flex-start; height: auto; padding: 10px 5%; }
-            nav { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center;}
-            nav a.tab-link { margin: 5px; padding: 8px 12px; font-size: 13px; }
-            body { padding-top: 100px; } 
-            .projects-grid { grid-template-columns: 1fr; }
+            .lightbox-content { width: 95%; } 
         }
     </style>
     <script>
-        // MINIMAL JAVASCRIPT: Highlights the Projects button
+        // Highlights the Projects button on page load
         document.addEventListener('DOMContentLoaded', () => {
             const currentLink = document.querySelector('nav a[href="projects.html"]'); 
             if (currentLink) {
@@ -134,25 +190,80 @@
 
     <div class="content-section">
         <h2><i class="fas fa-lightbulb"></i> Key Projects</h2>
+        <p style="margin-bottom: 20px; color: #aaa;">(Click on a project image to view it full size)</p>
+
         <div class="projects-grid">
+            
             <div class="card">
-                <img src="https://img.icons8.com/color/100/scratch.png" alt="Scratch Programming Logo" />
-                <h3>Scratch Logic Game</h3><p>A fun, movement-based game developed using Scratch to understand event handling and visual programming logic.</p>
+                <img src="game.png" 
+                     alt="Scratch Logic Game Screenshot" class="project-thumbnail" onclick="openLightbox(this)" />
+                <h3>Scratch Logic Game</h3>
+                <p>A fun, movement-based game developed using Scratch to understand event handling and visual programming logic.</p>
+            </div>
+
+            <div class="card">
+                <img src="atm.png" 
+                     alt="ATM Simulator Screenshot" class="project-thumbnail" onclick="openLightbox(this)" />
+                <h3>ATM Machine Simulator (C++)</h3>
+                <p>A command-line program demonstrating core banking operations like secure PIN authentication, deposit, and withdrawal.</p>
             </div>
             <div class="card">
-                <img src="https://img.icons8.com/color/100/atm.png" alt="ATM Machine Icon" />
-                <h3>ATM Machine Simulator (C++)</h3><p>A command-line program demonstrating core banking operations like secure PIN authentication, deposit, and withdrawal with persistent data storage (File Handling).</p>
+                <img src="poster.png" 
+                     alt="Canva Poster" class="project-thumbnail" onclick="openLightbox(this)" />
+                <h3>Canva Poster </h3>
+                <p>Al and Human Collaboration</p>
             </div>
+
             <div class="card">
-                <img src="https://img.icons8.com/color/100/calculator.png" alt="Calculator Icon" />
-                <h3>Advanced Calculator (C++)</h3><p>A reliable console calculator performing complex arithmetic functions, focusing on exception handling and user input validation.</p>
+                <img src="calculator.png" 
+                     alt="Calculator Project Screenshot" class="project-thumbnail" onclick="openLightbox(this)" />
+                <h3>Advanced Calculator (C++)</h3>
+                <p>A reliable console calculator performing complex arithmetic functions, focusing on exception handling and input validation.</p>
             </div>
+
             <div class="card">
-                <img src="https://img.icons8.com/color/100/books.png" alt="Library Books Icon" />
-                <h3>Library Management System</h3><p>A data management system written in C++ to efficiently handle book inventory, student records, and the full book issue/return cycle.</p>
+                <img src="library.png" 
+                     alt="Library System Screenshot" class="project-thumbnail" onclick="openLightbox(this)" />
+                <h3>Library Management System</h3>
+                <p>A data management system written in C++ to efficiently handle book inventory, student records, and issue/return cycles.</p>
             </div>
+            
         </div>
     </div>
+
+    <div id="myLightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="img01">
+    </div>
+
+    <script>
+        // Get the lightbox elements
+        var lightbox = document.getElementById("myLightbox");
+        var lightboxImg = document.getElementById("img01");
+
+        // Function to open the lightbox
+        window.openLightbox = function(element) {
+            // Check if the element exists and has a source before opening
+            if (element && element.src) {
+                lightbox.style.display = "block"; // Show the hidden div
+                lightboxImg.src = element.src;    // Set the popup image source
+            } else {
+                console.error("Clicked element is missing source or does not exist.");
+            }
+        }
+
+        // Function to close the lightbox
+        window.closeLightbox = function() {
+            lightbox.style.display = "none";
+        }
+
+        // Close lightbox if user clicks anywhere on the dark background
+        lightbox.onclick = function(event) {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        }
+    </script>
 
 </body>
 </html>
