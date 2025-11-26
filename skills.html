@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reesha Portfolio - Skills</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #00ffcc;
+            --secondary-color: #1c1c1c;
+            --bg-color: #030303;
+            --text-color: #ffffff;
+            --card-bg: rgba(28, 28, 28, 0.8);
+            --header-height: 80px;
+        }
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding-top: var(--header-height);
+        }
+
+        /* Header */
+        #main-header {
+            width: 100%; padding: 20px 5%; position: fixed;
+            display: flex; justify-content: space-between; align-items: center;
+            top: 0; left: 0; z-index: 1000;
+            background: rgba(3, 3, 3, 0.9);
+            border-bottom: 2px solid var(--primary-color);
+            backdrop-filter: blur(12px);
+        }
+        #main-header h1 {
+            font-size: 32px; color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        nav a.tab-link {
+            text-decoration: none; margin-left: 10px; padding: 10px 18px;
+            background: var(--secondary-color); border-radius: 8px;
+            color: var(--text-color); font-weight: 600; transition: .3s;
+            display: inline-flex; align-items: center; gap: 5px;
+        }
+        nav a.tab-link:hover, nav a.tab-link.active {
+            background: var(--primary-color); color: var(--bg-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        /* Skills Section */
+        .content-section {
+            padding: 40px 5%; margin-top: 20px;
+        }
+        h2 {
+            font-size: 40px; margin-bottom: 30px;
+            color: var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            text-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            backdrop-filter: blur(8px);
+            transition: transform .3s ease, box-shadow .3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px var(--primary-color);
+        }
+
+        .skill-header {
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 20px;
+        }
+        .skill-header img {
+            width: 45px; height: 45px; object-fit: contain;
+        }
+        .skill-header h3 {
+            font-size: 20px; color: var(--primary-color);
+        }
+
+        .skill-box { margin-bottom: 18px; }
+        .skill-info {
+            display: flex; justify-content: space-between;
+            color: var(--primary-color); font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .progress {
+            background: #1a1a1a; height: 10px;
+            border-radius: 10px;
+        }
+        .progress div {
+            height: 10px; border-radius: 10px;
+            background: var(--primary-color);
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <h1>Reesha Portfolio</h1>
+        <nav>
+            <a href="index.html" class="tab-link"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html" class="tab-link"><i class="fas fa-user"></i> About</a>
+            <a href="skills.html" class="tab-link active"><i class="fas fa-code"></i> Skills</a>
+            <a href="projects.html" class="tab-link"><i class="fas fa-project-diagram"></i> Projects</a>
+            <a href="contact.html" class="tab-link"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <div class="content-section">
+        <h2><i class="fas fa-tools"></i> Technical Skills</h2>
+        
+        <div class="skills-grid">
+
+            <!-- Programming Languages -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006363.png" alt="Programming Icon">
+                    <h3>Programming Languages</h3>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fas fa-code'></i> C++ Programming <span>70%</span></div>
+                    <div class="progress"><div style="width:70%"></div></div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fab fa-python'></i> Python (Data/ML Basics) <span>60%</span></div>
+                    <div class="progress"><div style="width:60%"></div></div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1674/1674969.png" alt="Web Icon">
+                    <h3>Web Development</h3>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fab fa-html5'></i> HTML5 <span>85%</span></div>
+                    <div class="progress"><div style="width:85%"></div></div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fab fa-css3-alt'></i> CSS3 <span>75%</span></div>
+                    <div class="progress"><div style="width:75%"></div></div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fab fa-js'></i> JavaScript <span>50%</span></div>
+                    <div class="progress"><div style="width:50%"></div></div>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721296.png" alt="Tools Icon">
+                    <h3>Tools & Productivity</h3>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fab fa-git-alt'></i> Git & GitHub <span>65%</span></div>
+                    <div class="progress"><div style="width:65%"></div></div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fas fa-file-word'></i> MS Word <span>90%</span></div>
+                    <div class="progress"><div style="width:90%"></div></div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fas fa-file-excel'></i> MS Excel <span>80%</span></div>
+                    <div class="progress"><div style="width:80%"></div></div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-info"><i class='fas fa-file-powerpoint'></i> MS PowerPoint <span>85%</span></div>
+                    <div class="progress"><div style="width:85%"></div></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
