@@ -89,7 +89,7 @@
             flex-direction: column;
         }
         
-        /* Thumbnail Styling */
+        
         .project-thumbnail {
             width: 100%;
             height: 220px; 
@@ -111,7 +111,7 @@
             color: var(--primary-color);
         }
         
-        /* --- CSS FOR LIGHTBOX (POPUP) --- */
+        
         .lightbox {
             display: none; 
             position: fixed; 
@@ -166,7 +166,7 @@
         }
     </style>
     <script>
-        // Highlights the Projects button on page load
+        
         document.addEventListener('DOMContentLoaded', () => {
             const currentLink = document.querySelector('nav a[href="projects.html"]'); 
             if (currentLink) {
@@ -237,27 +237,27 @@
     </div>
 
     <script>
-        // Get the lightbox elements
+        
         var lightbox = document.getElementById("myLightbox");
         var lightboxImg = document.getElementById("img01");
 
-        // Function to open the lightbox
+        
         window.openLightbox = function(element) {
-            // Check if the element exists and has a source before opening
+            
             if (element && element.src) {
-                lightbox.style.display = "block"; // Show the hidden div
-                lightboxImg.src = element.src;    // Set the popup image source
+                lightbox.style.display = "block"; 
+                lightboxImg.src = element.src;    
             } else {
                 console.error("Clicked element is missing source or does not exist.");
             }
         }
 
-        // Function to close the lightbox
+        
         window.closeLightbox = function() {
             lightbox.style.display = "none";
         }
 
-        // Close lightbox if user clicks anywhere on the dark background
+        
         lightbox.onclick = function(event) {
             if (event.target === lightbox) {
                 closeLightbox();

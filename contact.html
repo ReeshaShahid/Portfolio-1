@@ -58,7 +58,7 @@
             color: var(--bg-color);
             box-shadow: 0 0 15px var(--primary-color);
         }
-        /* Content Section Styling */
+       
         .content-section {
             width: 100%; 
             min-height: calc(100vh - var(--header-height)); 
@@ -76,7 +76,7 @@
             border: 1px solid rgba(0, 255, 204, 0.2); backdrop-filter: blur(8px);
         }
 
-        /* Media Queries */
+        
         @media (max-width: 768px) {
             #main-header { flex-direction: column; align-items: flex-start; height: auto; padding: 10px 5%; }
             nav { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center;}
@@ -85,7 +85,7 @@
         }
     </style>
     <script>
-        // MINIMAL JAVASCRIPT: Highlights the Contact button
+        
         document.addEventListener('DOMContentLoaded', () => {
             const currentLink = document.querySelector('nav a[href="contact.html"]'); 
             if (currentLink) {

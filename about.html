@@ -58,7 +58,7 @@
             color: var(--bg-color);
             box-shadow: 0 0 15px var(--primary-color);
         }
-        /* Content Section Styling */
+        
         .content-section {
             width: 100%; 
             min-height: calc(100vh - var(--header-height)); 
@@ -100,7 +100,7 @@
         .projects-grid .card { text-align: center; }
         .projects-grid img { width: 100px; height: 100px; margin-bottom: 15px; object-fit: contain;}
 
-        /* Media Queries */
+        
         @media (max-width: 768px) {
             #main-header { flex-direction: column; align-items: flex-start; height: auto; padding: 10px 5%; }
             nav { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center;}
@@ -110,7 +110,7 @@
         }
     </style>
     <script>
-        // MINIMAL JAVASCRIPT: Highlights the About button
+        
         document.addEventListener('DOMContentLoaded', () => {
             const currentLink = document.querySelector('nav a[href="about.html"]'); 
             if (currentLink) {
